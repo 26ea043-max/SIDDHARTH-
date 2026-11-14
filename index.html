@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agri Shop | Farmers Online Selling</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f5f8f2;
+    color: #243524;
+    line-height: 1.6;
+}
+
+header {
+    background: #1f6b3b;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav {
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #c9ef8b;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 22px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #c9ef8b;
+}
+
+.hero {
+    background: linear-gradient(110deg, #174d2c, #3f8c48);
+    color: white;
+    padding: 75px 20px;
+}
+
+.hero-inner {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 650px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background: #e7f7a7;
+    color: #1d4b2c;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.hero-card {
+    background: #ffffff18;
+    border: 1px solid #ffffff40;
+    padding: 30px;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.hero-card .emoji {
+    font-size: 80px;
+}
+
+section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 55px 20px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.title h2 {
+    font-size: 32px;
+    color: #1f6b3b;
+}
+
+.title p {
+    color: #647264;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.category {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 14px #0000000d;
+    cursor: pointer;
+}
+
+.category:hover {
+    transform: translateY(-3px);
+}
+
+.category .icon {
+    font-size: 42px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px #00000012;
+}
+
+.product-img {
+    height: 145px;
+    background: #e8f4df;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 68px;
+}
+
+.product-body {
+    padding: 16px;
+}
+
+.product h3 {
+    margin-bottom: 5px;
+}
+
+.farmer {
+    font-size: 13px;
+    color: #6b786b;
+}
+
+.price {
+    font-size: 21px;
+    font-weight: bold;
+    color: #1f6b3b;
+    margin: 10px 0;
+}
+
+.add {
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    border-radius: 7px;
+    background: #1f6b3b;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+}
+
+.feature h3 {
+    margin: 8px 0;
+    color: #1f6b3b;
+}
+
+.about {
+    background: #eaf4e4;
+    border-radius: 18px;
+    padding: 35px;
+}
+
+.contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+}
+
+.field {
+    margin-bottom: 14px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd7c8;
+    border-radius: 7px;
+}
+
+footer {
+    background: #173b25;
+    color: white;
+    text-align: center;
+    padding: 28px;
+}
+
+.cart {
+    position: relative;
+}
+
+.count {
+    background: #d7ef7b;
+    color: #173b25;
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 2px 7px;
+    position: absolute;
+    top: -12px;
+    right: -15px;
+}
+
+#message {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: #1f6b3b;
+    color: white;
+    padding: 13px 18px;
+    border-radius: 8px;
+    display: none;
+    z-index: 20;
+}
+
+@media (max-width: 850px) {
+    .hero-inner,
+    .contact {
+        grid-template-columns: 1fr;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        gap: 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 550px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    nav ul {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">🌾 Agri<span>Shop</span></div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#products">Products</a></li>
+<li><a href="#farmers">Farmers</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+<li>
+<a href="#cart" class="cart">
+🛒 Cart
+<span class="count" id="cartCount">0</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+
+<main id="home">
+
+<section class="hero">
+<div class="hero-inner">
+
+<div>
+<h1>Fresh from Farmers,<br>Direct to You.</h1>
+
+<p>
+Agri Shop connects farmers directly with customers.
+Buy fresh vegetables, fruits, grains and farm products
+at transparent prices.
+</p>
+
+<a class="btn" href="#products">
+Shop Products →
+</a>
+</div>
+
+<div class="hero-card">
+<div class="emoji">👨‍🌾🌱</div>
+<h2>Support Local Farmers</h2>
+<p>Fair prices. Fresh products. Direct selling.</p>
+</div>
+
+</div>
+</section>
+
+<section>
+
+<div class="title">
+<h2>Shop by Category</h2>
+<p>Choose fresh products from local farmers.</p>
+</div>
+
+<div class="categories">
+
+<div class="category" onclick="filterProducts('Vegetables')">
+<div class="icon">🥕</div>
+<h3>Vegetables</h3>
+</div>
+
+<div class="category" onclick="filterProducts('Fruits')">
+<div class="icon">🍎</div>
+<h3>Fruits</h3>
+</div>
+
+<div class="category" onclick="filterProducts('Grains')">
+<div class="icon">🌾</div>
+<h3>Grains</h3>
+</div>
+
+<div class="category" onclick="filterProducts('Organic')">
+<div class="icon">🌱</div>
+<h3>Organic</h3>
+</div>
+
+</div>
+</section>
+
+<section id="products">
+
+<div class="title">
+<h2>Featured Products</h2>
+<p>Fresh products listed directly by farmers.</p>
+</div>
+
+<div style="max-width:500px;margin:0 auto 25px">
+<input
+id="search"
+type="text"
+placeholder="🔎 Search products..."
+oninput="searchProducts()">
+</div>
+
+<div class="products" id="productGrid"></div>
+
+</section>
+
+<section id="farmers">
+
+<div class="title">
+<h2>Why Farmers Choose AgriShop</h2>
+</div>
+
+<div class="features">
+
+<div class="feature">
+<div class="icon">💰</div>
+<h3>Better Prices</h3>
+<p>
+Farmers can sell directly and keep more value
+from every sale.
+</p>
+</div>
+
+<div class="feature">
+<div class="icon">📱</div>
+<h3>Easy Online Selling</h3>
+<p>
+Upload products, manage stock and receive
+customer orders online.
+</p>
+</div>
+
+<div class="feature">
+<div class="icon">🤝</div>
+<h3>Direct Customers</h3>
+<p>
+Build direct relationships with customers
+and grow your market.
+</p>
+</div>
+
+</div>
+</section>
+
+<section id="about">
+
+<div class="about">
+
+<div class="title">
+<h2>About AgriShop</h2>
+</div>
+
+<p>
+AgriShop is a mini-project concept designed to create
+a direct digital marketplace for farmers and customers.
+Farmers can list their agricultural products, while
+customers can browse, add products to a cart and place orders.
+</p>
+
+<br>
+
+<p>
+<b>Project:</b> Agri Shop – Farmers Online Selling<br>
+<b>Student:</b> Siddharth M<br>
+<b>Register No:</b> 111726114043<br>
+<b>Branch:</b> ECA
+</p>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="title">
+<h2>Contact / Farmer Registration</h2>
+<p>Want to sell your farm products? Register below.</p>
+</div>
+
+<div class="contact">
+
+<form onsubmit="submitForm(event)">
+
+<div class="field">
+<label>Farmer Name</label>
+<input required placeholder="Enter your name">
+</div>
+
+<div class="field">
+<label>Mobile Number</label>
+<input required type="tel" placeholder="Enter mobile number">
+</div>
+
+<div class="field">
+<label>Product Category</label>
+
+<select>
+<option>Vegetables</option>
+<option>Fruits</option>
+<option>Grains</option>
+<option>Organic</option>
+</select>
+
+</div>
+
+<button class="add" type="submit">
+Register as Farmer
+</button>
+
+</form>
+
+<div class="about">
+
+<h3>📍 Direct Farmer-to-Customer</h3>
+
+<p>
+Our goal is to make agricultural selling simple,
+transparent and accessible through technology.
+</p>
+
+<br>
+
+<h3>📧 Support</h3>
+
+<p>support@agrishop.example</p>
+
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+
+<p>
+© 2026 AgriShop – Farmers Online Selling
+</p>
+
+<p>
+Mini Project | Siddharth M | ECA
+</p>
+
+</footer>
+
+<div id="message"></div>
+
+<script>
+
+const products = [
+
+{
+name: "Fresh Tomatoes",
+cat: "Vegetables",
+price: 30,
+unit: "kg",
+emoji: "🍅",
+farmer: "Ravi Farms"
+},
+
+{
+name: "Organic Carrots",
+cat: "Vegetables",
+price: 45,
+unit: "kg",
+emoji: "🥕",
+farmer: "Green Valley Farm"
+},
+
+{
+name: "Fresh Apples",
+cat: "Fruits",
+price: 120,
+unit: "kg",
+emoji: "🍎",
+farmer: "Hill View Farm"
+},
+
+{
+name: "Bananas",
+cat: "Fruits",
+price: 50,
+unit: "dozen",
+emoji: "🍌",
+farmer: "Sunrise Farms"
+},
+
+{
+name: "Premium Rice",
+cat: "Grains",
+price: 65,
+unit: "kg",
+emoji: "🍚",
+farmer: "Kaveri Agro"
+},
+
+{
+name: "Wheat",
+cat: "Grains",
+price: 48,
+unit: "kg",
+emoji: "🌾",
+farmer: "Golden Field Farm"
+},
+
+{
+name: "Organic Greens",
+cat: "Organic",
+price: 35,
+unit: "bundle",
+emoji: "🥬",
+farmer: "Nature Fresh Farm"
+},
+
+{
+name: "Organic Mangoes",
+cat: "Organic",
+price: 150,
+unit: "kg",
+emoji: "🥭",
+farmer: "Mango Valley"
+}
+
+];
+
+let cart = 0;
+
+let current = products;
+
+const grid = document.getElementById("productGrid");
+
+function render(list) {
+
+grid.innerHTML = list.map((p, i) => `
+
+<div class="product">
+
+<div class="product-img">
+${p.emoji}
+</div>
+
+<div class="product-body">
+
+<h3>${p.name}</h3>
+
+<div class="farmer">
+👨‍🌾 ${p.farmer}
+</div>
+
+<div class="price">
+₹${p.price} / ${p.unit}
+</div>
+
+<button
+class="add"
+onclick="addCart('${p.name}')">
+
+Add to Cart
+
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+function addCart(name) {
+
+cart++;
+
+document.getElementById("cartCount").textContent = cart;
+
+show(name + " added to cart 🛒");
+
+}
+
+function show(text) {
+
+const message = document.getElementById("message");
+
+message.textContent = text;
+
+message.style.display = "block";
+
+setTimeout(() => {
+
+message.style.display = "none";
+
+}, 1800);
+
+}
+
+function filterProducts(cat) {
+
+current = products.filter(
+p => p.cat === cat
+);
+
+render(current);
+
+location.hash = "products";
+
+}
+
+function searchProducts() {
+
+const q = document
+.getElementById("search")
+.value
+.toLowerCase();
+
+render(
+
+products.filter(
+
+p =>
+
+(p.name + " " +
+p.cat + " " +
+p.farmer)
+.toLowerCase()
+.includes(q)
+
+)
+
+);
+
+}
+
+function submitForm(e) {
+
+e.preventDefault();
+
+show(
+"Farmer registration submitted successfully! 🌱"
+);
+
+e.target.reset();
+
+}
+
+render(products);
+
+</script>
+
+</body>
+</html>
